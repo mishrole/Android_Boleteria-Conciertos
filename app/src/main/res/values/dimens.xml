@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbarAlto">55dp</dimen>
+    <dimen name="paddingLayout">20dp</dimen>
+    <dimen name="cajaTextoAlto">35dp</dimen>
+    <dimen name="cajaTextoAncho">250dp</dimen>
+    <dimen name="botonAlto">45dp</dimen>
+    <dimen name="botonAncho">250dp</dimen>
+    <dimen name="margenCaja">10dp</dimen>
+    <dimen name="paddingCaja">5dp</dimen>
+</resources>

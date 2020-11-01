@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_fondo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="112dp"
+            android:layout_height="105dp"
+            app:srcCompat="@drawable/logo" />
+
+        <EditText
+            android:id="@+id/edtUsuarioInicio"
+            android:layout_width="@dimen/cajaTextoAncho"
+            android:layout_height="@dimen/cajaTextoAlto"
+            android:background="@color/blanco"
+            android:drawableLeft="@drawable/usuario_logo"
+            android:ems="10"
+            android:hint="Usuario"
+            android:inputType="textPersonName"
+            android:layout_marginTop="@dimen/margenCaja"
+            android:layout_marginBottom="@dimen/margenCaja"
+            android:padding="@dimen/paddingCaja"/>
+
+        <EditText
+            android:id="@+id/edtContrasenaInicio"
+            android:layout_width="@dimen/cajaTextoAncho"
+            android:layout_height="@dimen/cajaTextoAlto"
+            android:background="@color/blanco"
+            android:drawableLeft="@drawable/password_logo"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="@dimen/paddingCaja"
+            android:layout_marginBottom="@dimen/margenCaja"/>
+
+        <Button
+            android:id="@+id/btnIngresarInicio"
+            android:layout_width="@dimen/botonAncho"
+            android:layout_height="@dimen/botonAlto"
+            android:text="INGRESAR"
+            android:background="@color/botonColor"
+            android:textColor="@color/blanco"
+            android:layout_marginTop="@dimen/margenCaja"
+            android:layout_marginBottom="@dimen/margenCaja"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:layout_marginTop="80dp"/>
+
+        <Button
+            android:id="@+id/btnRegistrarInicio"
+            android:layout_width="@dimen/botonAncho"
+            android:layout_height="@dimen/botonAlto"
+            android:text="REGISTRAR"
+            android:background="@color/botonColor"
+            android:textColor="@color/blanco"
+            android:layout_marginTop="@dimen/margenCaja"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
