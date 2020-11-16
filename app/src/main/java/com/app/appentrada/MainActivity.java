@@ -5,17 +5,25 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.app.appentrada.adaptador.CardViewAdaptador;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Toolbar toolbar;
-    Button n;
+
+    RecyclerView rvEventos;
+    CardViewAdaptador adaptador;
+    ArrayList<String> listaEventos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +33,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolbar = (Toolbar) findViewById(R.id.toolbarPersonalizado);
         setSupportActionBar(toolbar);
 
-        n = findViewById(R.id.button2);
-        n.setOnClickListener(this);
+        /*CardView y RecyclerView*/
+        rvEventos = findViewById(R.id.rvEventos);
+        listaEventos = new ArrayList<>();
+        listaEventos.add("Evento 1");
+        listaEventos.add("Evento 2");
+        listaEventos.add("Evento 3");
+        listaEventos.add("Evento 4");
+        listaEventos.add("Evento 5");
+        listaEventos.add("Evento 6");
+        listaEventos.add("Evento 7");
+
+        rvEventos.setLayoutManager(new LinearLayoutManager(this));
+        adaptador = new CardViewAdaptador(this, listaEventos);
+        rvEventos.setAdapter(adaptador);
     }
 
     @Override
@@ -40,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
 
         if(id == R.id.opcion1){
-            Toast.makeText(this, "OPCION 1", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.opcion2){
             Toast.makeText(this, "OPCION 2", Toast.LENGTH_SHORT).show();
@@ -66,9 +87,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view == n){
-            Intent intent = new Intent(this, DetalleEventoActivity.class);
-            startActivity(intent);
-        }
+
     }
 }

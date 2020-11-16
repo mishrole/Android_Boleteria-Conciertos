@@ -1,5 +1,6 @@
 package com.app.appentrada;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,7 +34,8 @@ public class DetalleCompraActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.opcion1){
-            Toast.makeText(this, "OPCION 1", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.opcion2){
             Toast.makeText(this, "OPCION 2", Toast.LENGTH_SHORT).show();
