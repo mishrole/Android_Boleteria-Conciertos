@@ -50,7 +50,8 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
         int id = item.getItemId();
 
         if(id == R.id.opcion1){
-            Toast.makeText(this, "OPCION 1", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.opcion2){
             Toast.makeText(this, "OPCION 2", Toast.LENGTH_SHORT).show();
