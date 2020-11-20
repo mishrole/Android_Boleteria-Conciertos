@@ -4,16 +4,15 @@ import java.io.Serializable;
 
 public class Local implements Serializable {
 
-    private String codLocal;
+    private int codLocal;
     private String nombre;
-    private int aforo;
     private String direccion;
 
-    public String getCodLocal() {
+    public int getCodLocal() {
         return codLocal;
     }
 
-    public void setCodLocal(String codLocal) {
+    public void setCodLocal(int codLocal) {
         this.codLocal = codLocal;
     }
 
@@ -23,14 +22,6 @@ public class Local implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public int getAforo() {
-        return aforo;
-    }
-
-    public void setAforo(int aforo) {
-        this.aforo = aforo;
     }
 
     public String getDireccion() {

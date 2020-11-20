@@ -25,4 +25,6 @@ public class IntroduccionActivity extends AppCompatActivity {
         Intent intent = new Intent(this, IniciarSesionActivity.class);
         startActivity(intent);
     }
+
+
 }

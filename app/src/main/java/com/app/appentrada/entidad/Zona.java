@@ -4,14 +4,15 @@ import java.io.Serializable;
 
 public class Zona implements Serializable {
 
-    private String codZona;
+    private int codZona;
     private String nombre;
+    private double precio;
 
-    public String getCodZona() {
+    public int getCodZona() {
         return codZona;
     }
 
-    public void setCodZona(String codZona) {
+    public void setCodZona(int codZona) {
         this.codZona = codZona;
     }
 
@@ -21,5 +22,13 @@ public class Zona implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 }
