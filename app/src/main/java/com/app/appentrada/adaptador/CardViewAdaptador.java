@@ -13,15 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.appentrada.DetalleEventoActivity;
 import com.app.appentrada.R;
+import com.app.appentrada.entidad.Concierto;
 
 import java.util.List;
 
 public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.ViewHolder>{
 
     private LayoutInflater layoutInflador;
-    private List<String> data;
+    private List<Concierto> data;
 
-    public CardViewAdaptador(Context context, List<String> data){
+    public CardViewAdaptador(Context context, List<Concierto> data){
         this.layoutInflador = LayoutInflater.from(context);
         this.data = data;
     }
@@ -35,8 +36,12 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewholder, int i) {
-        String evento = data.get(i);
+        String evento = data.get(i).getNombre();
+        String artista = data.get(i).getArtista();
+        String fecha = data.get(i).getFecha();
         viewholder.tvEvento.setText(evento);
+        viewholder.tvArtista.setText(artista);
+        viewholder.tvFecha.setText(fecha);
 
         //Eventos
         viewholder.setOnClickListeners();
@@ -62,6 +67,7 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
             tvEvento = itemView.findViewById(R.id.tvNombre_cardView);
             tvArtista = itemView.findViewById(R.id.tvArtista_cardView);
             tvFecha = itemView.findViewById(R.id.tvFecha_cardView);
+
             linearLayout = itemView.findViewById(R.id.linearCardView);
         }
 
@@ -74,7 +80,9 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
             if(view.getId()== R.id.linearCardView){
                 Intent intent = new Intent(context, DetalleEventoActivity.class);
                 //pasar los datos con la activity
-                //intent.putExtra("idEvento", idEvento.getText());
+                intent.putExtra("nomConcierto", tvEvento.getText());
+                intent.putExtra("artista", tvArtista.getText());
+                intent.putExtra("fecha", tvFecha.getText());
                 context.startActivity(intent);
             }
         }

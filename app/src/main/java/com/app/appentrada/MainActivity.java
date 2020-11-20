@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.appentrada.adaptador.CardViewAdaptador;
+import com.app.appentrada.dao.MySqlConcierto;
+import com.app.appentrada.entidad.Concierto;
 
 import java.util.ArrayList;
 
@@ -23,7 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     RecyclerView rvEventos;
     CardViewAdaptador adaptador;
-    ArrayList<String> listaEventos;
+    ArrayList<Concierto> listaConcierto;
+    MySqlConcierto daoConcierto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         /*CardView y RecyclerView*/
         rvEventos = findViewById(R.id.rvEventos);
-        listaEventos = new ArrayList<>();
-        listaEventos.add("Evento 1");
-        listaEventos.add("Evento 2");
-        listaEventos.add("Evento 3");
-        listaEventos.add("Evento 4");
-        listaEventos.add("Evento 5");
-        listaEventos.add("Evento 6");
-        listaEventos.add("Evento 7");
+        listaConcierto = daoConcierto.listarConcierto();
 
         rvEventos.setLayoutManager(new LinearLayoutManager(this));
-        adaptador = new CardViewAdaptador(this, listaEventos);
+        adaptador = new CardViewAdaptador(this, listaConcierto);
         rvEventos.setAdapter(adaptador);
     }
 

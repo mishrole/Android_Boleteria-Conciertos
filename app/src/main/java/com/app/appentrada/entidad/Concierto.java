@@ -1,23 +1,23 @@
 package com.app.appentrada.entidad;
 
 import java.io.Serializable;
-import java.util.Date;
 
-public class Evento implements Serializable {
+public class Concierto implements Serializable {
 
-    private String codEvento;
+    private int codConcierto;
     private String nombre;
     private String artista;
-    private Date fecha;
+    private String fecha;
     private String descrip;
-    private String codLocal;
+    private int codLocal;
+    private String foto;
 
-    public String getCodEvento() {
-        return codEvento;
+    public int getCodConcierto() {
+        return codConcierto;
     }
 
-    public void setCodEvento(String codEvento) {
-        this.codEvento = codEvento;
+    public void setCodConcierto(int codConcierto) {
+        this.codConcierto = codConcierto;
     }
 
     public String getNombre() {
@@ -36,11 +36,11 @@ public class Evento implements Serializable {
         this.artista = artista;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -52,11 +52,19 @@ public class Evento implements Serializable {
         this.descrip = descrip;
     }
 
-    public String getCodLocal() {
+    public int getCodLocal() {
         return codLocal;
     }
 
-    public void setCodLocal(String codLocal) {
+    public void setCodLocal(int codLocal) {
         this.codLocal = codLocal;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

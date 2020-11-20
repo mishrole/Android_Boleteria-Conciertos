@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
-    private String codUsuario;
+    private int codUsuario;
     private String nickname;
     private String contrasena;
     private String nombre;
     private String apellidos;
     private String correo;
     private String dni;
-    private int edad;
+    private int tipo;
 
-    public String getCodUsuario() {
+    public int getCodUsuario() {
         return codUsuario;
     }
 
-    public void setCodUsuario(String codUsuario) {
+    public void setCodUsuario(int codUsuario) {
         this.codUsuario = codUsuario;
     }
 
@@ -69,11 +69,11 @@ public class Usuario implements Serializable {
         this.dni = dni;
     }
 
-    public int getEdad() {
-        return edad;
+    public int getTipo() {
+        return tipo;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setTipo(int edad) {
+        this.tipo = edad;
     }
 }
