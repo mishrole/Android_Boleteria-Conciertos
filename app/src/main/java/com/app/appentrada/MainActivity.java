@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RecyclerView rvEventos;
     CardViewAdaptador adaptador;
     ArrayList<Concierto> listaConcierto;
-    MySqlConcierto daoConcierto;
+    MySqlConcierto daoConcierto = new MySqlConcierto(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

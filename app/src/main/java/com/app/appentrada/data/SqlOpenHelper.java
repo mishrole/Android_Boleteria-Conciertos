@@ -15,7 +15,6 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(Utilidades.crearTablaTipoUsuario);
         db.execSQL(Utilidades.crearTablaUsuario);
         db.execSQL(Utilidades.crearTablaZona);
@@ -25,11 +24,11 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaTipoUsuario);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaUsuario);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaZona);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaLocal);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaConcierto);
+        db.execSQL("DROP TABLE IF EXISTS "+ Utilidades.tablaTipoUsuario);
+        db.execSQL("DROP TABLE IF EXISTS "+ Utilidades.tablaUsuario);
+        db.execSQL("DROP TABLE IF EXISTS "+ Utilidades.tablaZona);
+        db.execSQL("DROP TABLE IF EXISTS "+ Utilidades.tablaLocal);
+        db.execSQL("DROP TABLE IF EXISTS "+ Utilidades.tablaConcierto);
         onCreate(db);
     }
 }
