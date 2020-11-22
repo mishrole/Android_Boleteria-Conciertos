@@ -32,7 +32,7 @@ public class MySqlConcierto {
             bean.setFecha(cursor.getString(3));
             bean.setDescrip(cursor.getString(4));
             bean.setCodLocal(cursor.getInt(5));
-            bean.setFoto(cursor.getString(6));
+            bean.setFoto(cursor.getInt(6));
             lista.add(bean);
         }
         return lista;

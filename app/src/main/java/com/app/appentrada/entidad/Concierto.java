@@ -10,7 +10,7 @@ public class Concierto implements Serializable {
     private String fecha;
     private String descrip;
     private int codLocal;
-    private String foto;
+    private int foto;
 
     public int getCodConcierto() {
         return codConcierto;
@@ -60,11 +60,11 @@ public class Concierto implements Serializable {
         this.codLocal = codLocal;
     }
 
-    public String getFoto() {
+    public int getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(int foto) {
         this.foto = foto;
     }
 }

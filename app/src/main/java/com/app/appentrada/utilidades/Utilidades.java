@@ -44,8 +44,7 @@ public class Utilidades {
             "fec_con text,"+
             "desc_con varchar(255),"+
             "id_local int,"+
-            "foto varchar(45),"+
+            "foto int,"+
             "foreign key (id_local) references TB_LOCAL(id_local) )";
-
 
 }

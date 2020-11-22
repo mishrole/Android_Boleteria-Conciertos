@@ -36,14 +36,34 @@ public class IniciarSesionActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciarsesion);
 
-        edtUsusario = findViewById(R.id.edtUsuarioInicio);
-        edtContraseña = findViewById(R.id.edtContrasenaInicio);
+        edtUsusario = (EditText) findViewById(R.id.edtUsuarioInicio);
+        edtContraseña =(EditText) findViewById(R.id.edtContrasenaInicio);
         btnIngresar = findViewById(R.id.btnIngresarInicio);
         btnRegistrar = findViewById(R.id.btnRegistrarInicio);
         btnIngresar.setOnClickListener(this);
         btnRegistrar.setOnClickListener(this);
 
         ingresarDatos();
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        if (view == btnIngresar){
+            String usuario = edtUsusario.getText().toString();
+            String contrasena = edtContraseña.getText().toString();
+            int salida = daoUsuario.buscarUsuario(usuario, contrasena);
+            if(salida>0){
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
+            else
+                mensaje("No se encontro usuario");
+        }
+        else{
+            Intent intent = new Intent(this, RegistroActivity.class);
+            startActivity(intent);
+        }
     }
 
     void ingresarDatos(){
@@ -119,7 +139,7 @@ public class IniciarSesionActivity extends AppCompatActivity implements View.OnC
         bean4.setFecha("2021-10-10");
         bean4.setDescrip("Guns n Roses vuelva a Lima");
         bean4.setCodLocal(1);
-        bean4.setFoto("1.jpg");
+        bean4.setFoto(1);
         salida = daoConcierto.adicionarConcierto(bean4);
         bean4 = new Concierto();
         bean4.setNombre("Rolling Stones en Lima");
@@ -127,24 +147,12 @@ public class IniciarSesionActivity extends AppCompatActivity implements View.OnC
         bean4.setFecha("2021-10-09");
         bean4.setDescrip("Rolling Stones vuelve a lima");
         bean4.setCodLocal(2);
-        bean4.setFoto("2.jpg");
+        bean4.setFoto(2);
         salida = daoConcierto.adicionarConcierto(bean4);
         if (salida > 0)
             mensaje("Bienvenido");
         else
             mensaje("Hubo un Error");
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view == btnIngresar){
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
-        else{
-            Intent intent = new Intent(this, RegistroActivity.class);
-            startActivity(intent);
-        }
     }
 
     void mensaje(String m){
