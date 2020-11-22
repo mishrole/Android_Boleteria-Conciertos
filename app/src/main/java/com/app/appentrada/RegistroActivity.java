@@ -56,9 +56,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
             }
             else
                 mensaje("Error en el registro...");
-
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            
         }
     }
 
