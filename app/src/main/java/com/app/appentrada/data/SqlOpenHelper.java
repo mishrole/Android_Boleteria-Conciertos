@@ -20,6 +20,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.crearTablaZona);
         db.execSQL(Utilidades.crearTablaLocal);
         db.execSQL(Utilidades.crearTablaConcierto);
+        db.execSQL(Utilidades.crearTablaEntrada);
     }
 
     @Override

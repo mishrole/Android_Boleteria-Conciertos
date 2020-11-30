@@ -17,13 +17,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.app.appentrada.dao.MySqlEntrada;
 import com.app.appentrada.dao.MySqlZona;
+import com.app.appentrada.entidad.Entrada;
 import com.app.appentrada.entidad.Zona;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CompraEntradaActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    int codigoConcierto;
+    Date fecha;
     Toolbar toolbar;
     EditText edtNombreEvento, edtPrecio, edtMonto;
     Spinner spnZona, spnCantidad;
@@ -31,6 +36,8 @@ public class CompraEntradaActivity extends AppCompatActivity implements View.OnC
     ImageView imgFoto;
 
     MySqlZona daoZona = new MySqlZona(this);
+    MySqlEntrada daoEntrada = new MySqlEntrada(this);
+
     ArrayList<String> listaprecio = new ArrayList<>();
     ArrayList<String> nombreZona = new ArrayList<>();
 
@@ -74,7 +81,8 @@ public class CompraEntradaActivity extends AppCompatActivity implements View.OnC
             startActivity(intent);
         }
         else if(id == R.id.opcion2){
-            Toast.makeText(this, "OPCION 2", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, PerfilActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.opcion3){
             Toast.makeText(this, "OPCION 3", Toast.LENGTH_SHORT).show();
@@ -89,7 +97,8 @@ public class CompraEntradaActivity extends AppCompatActivity implements View.OnC
             Toast.makeText(this, "OPCION 6", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.opcion7){
-            Toast.makeText(this, "OPCION 7", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, IniciarSesionActivity.class);
+            startActivity(intent);
         }
 
         return true;
@@ -98,8 +107,34 @@ public class CompraEntradaActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         if (view == btnValidar){
-            Intent intent = new Intent(this, DetalleCompraActivity.class);
-            startActivity(intent);
+            Entrada bean = null;
+            fecha = new Date();
+            int salida = -1;
+            int cantidad = spnCantidad.getSelectedItemPosition();
+
+            for(int i=0; i<cantidad; i++){
+                bean = new Entrada();
+                bean.setCodConcierto(codigoConcierto);
+                bean.setCodZona(spnZona.getSelectedItemPosition()+1);
+                bean.setEstado(1);
+                bean.setPrecio(Double.parseDouble(edtPrecio.getText().toString()));
+                salida = daoEntrada.adicionarEntrada(bean);
+            }
+
+            if(salida == 1){
+                mensaje("Adquirio entradas para este concierto");
+                Intent intent = new Intent(this, DetalleCompraActivity.class);
+                intent.putExtra("fecha", ""+fecha);
+                intent.putExtra("concierto", edtNombreEvento.getText().toString());
+                intent.putExtra("zona", nombreZona.get(spnZona.getSelectedItemPosition()));
+                intent.putExtra("cantidad", ""+spnCantidad.getSelectedItemId());
+                intent.putExtra("precio", edtPrecio.getText().toString());
+                intent.putExtra("monto", edtMonto.getText().toString());
+                startActivity(intent);
+            }
+            else{
+                mensaje("Error al intentar comprar entradas");
+            }
         }
     }
 
@@ -120,6 +155,7 @@ public class CompraEntradaActivity extends AppCompatActivity implements View.OnC
     }
 
     void cargarDatos(){
+        /*Cargar datos de los spn del Layout*/
         ArrayList<Zona> listaZonas;
         listaZonas = daoZona.listarZona();
         int tamano = listaZonas.size();
@@ -139,8 +175,9 @@ public class CompraEntradaActivity extends AppCompatActivity implements View.OnC
                 android.R.layout.simple_list_item_1, nombreZona);
         spnZona.setAdapter(adapter);
 
-
+        /*Cargar datos del concierto*/
         Bundle datos = this.getIntent().getExtras();
+        codigoConcierto = datos.getInt("codConcierto");
         edtNombreEvento.setText(datos.getString("nombreConcierto"));
         String foto = datos.getString("foto");
 
@@ -155,6 +192,10 @@ public class CompraEntradaActivity extends AppCompatActivity implements View.OnC
         else
             montoTotal = Double.parseDouble(listaprecio.get(posZona)) * poscantidad;
         return montoTotal;
+    }
+
+    void mensaje(String m){
+        Toast.makeText(this,m,Toast.LENGTH_LONG).show();
     }
 
 }

@@ -53,7 +53,7 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
         viewholder.descrip = descripcion;
         viewholder.codLocal = idLocal;
         viewholder.foto = ""+foto;
-        viewholder.imvImagen.setImageResource(R.drawable.i1);
+        viewholder.imvImagen.setImageResource(viewholder.img.cargarImagen(""+foto));
 
         //Eventos
         viewholder.setOnClickListeners();
@@ -114,8 +114,10 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
 
         public class Imagenes extends AppCompatActivity{
 
-            public Imagenes(Context c){
+            Context context;
 
+            public Imagenes(Context c){
+                this.context = c;
             }
             public int cargarImagen(String img){
                 int id = this.getResources().getIdentifier("i"+img, "drawable", this.getPackageName());

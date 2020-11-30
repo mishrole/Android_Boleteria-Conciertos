@@ -61,7 +61,8 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
             startActivity(intent);
         }
         else if(id == R.id.opcion2){
-            Toast.makeText(this, "OPCION 2", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, PerfilActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.opcion3){
             Toast.makeText(this, "OPCION 3", Toast.LENGTH_SHORT).show();
@@ -76,7 +77,8 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
             Toast.makeText(this, "OPCION 6", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.opcion7){
-            Toast.makeText(this, "OPCION 7", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, IniciarSesionActivity.class);
+            startActivity(intent);
         }
 
         return true;
@@ -86,6 +88,7 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
     public void onClick(View view) {
         if(view == btnComprar){
             Intent intent = new Intent(this, CompraEntradaActivity.class);
+            intent.putExtra("codConcierto", codConcierto);
             intent.putExtra("nombreConcierto", tvNombreEvento.getText());
             intent.putExtra("foto", foto);
             startActivity(intent);

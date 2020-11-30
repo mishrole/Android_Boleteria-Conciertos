@@ -50,13 +50,8 @@ public class MySqlUsuario {
             bean.setCodUsuario(cursor.getInt(0));
             bean.setNickname(cursor.getString(1));
             bean.setContrasena(cursor.getString(2));
-            bean.setNombre(cursor.getString(3));
-            bean.setApellidos(cursor.getString(4));
-            bean.setCorreo(cursor.getString(5));
-            bean.setDni(cursor.getString(6));
-            bean.setTipo(cursor.getInt(7));
 
-            if(bean.getNickname()==usu && bean.getContrasena()==contr)
+            if(bean.getNickname().trim()==usu && bean.getContrasena().trim()==contr)
                 salida = 1;
         }
 
