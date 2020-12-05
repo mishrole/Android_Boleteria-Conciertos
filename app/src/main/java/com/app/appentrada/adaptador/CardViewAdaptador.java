@@ -53,7 +53,7 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
         viewholder.descrip = descripcion;
         viewholder.codLocal = idLocal;
         viewholder.foto = ""+foto;
-        viewholder.imvImagen.setImageResource(viewholder.img.cargarImagen(""+foto));
+        viewholder.imvImagen.setImageResource(R.drawable.i1);
 
         //Eventos
         viewholder.setOnClickListeners();

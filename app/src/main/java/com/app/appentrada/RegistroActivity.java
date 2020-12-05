@@ -37,6 +37,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
+
         if (view == btnRegistrar){
             Usuario bean = new Usuario();
             bean.setNickname(edtUsuario.getText().toString());
@@ -56,7 +57,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
             }
             else
                 mensaje("Error en el registro...");
-            
+
         }
     }
 
