@@ -30,7 +30,7 @@
                 android:layout_marginBottom="@dimen/margenCaja"/>
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imgCompraEntrada"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 app:srcCompat="@drawable/evento_cuba_vibra"
@@ -57,7 +57,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:hint="Nombre del Evento"/>
+                    android:hint="Nombre del Evento"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -98,7 +99,8 @@
                     android:id="@+id/spnCantidadCompra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:entries="@array/cantidad" />
             </LinearLayout>
 
             <LinearLayout

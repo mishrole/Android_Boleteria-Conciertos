@@ -22,7 +22,7 @@
             android:padding="5dp">
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/imgCardView"
                 android:layout_width="140dp"
                 android:layout_height="200dp"
                 app:layout_constraintBottom_toBottomOf="parent"

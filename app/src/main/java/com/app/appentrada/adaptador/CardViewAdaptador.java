@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.appentrada.DetalleEventoActivity;
@@ -36,12 +38,22 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewholder, int i) {
+        int codigo = data.get(i).getCodConcierto();
         String evento = data.get(i).getNombre();
         String artista = data.get(i).getArtista();
         String fecha = data.get(i).getFecha();
+        String descripcion = data.get(i).getDescrip();
+        int idLocal = data.get(i).getCodLocal();
+        int foto = data.get(i).getFoto();
+
+        viewholder.codConcierto = codigo;
         viewholder.tvEvento.setText(evento);
         viewholder.tvArtista.setText(artista);
         viewholder.tvFecha.setText(fecha);
+        viewholder.descrip = descripcion;
+        viewholder.codLocal = idLocal;
+        viewholder.foto = ""+foto;
+        viewholder.imvImagen.setImageResource(R.drawable.i1);
 
         //Eventos
         viewholder.setOnClickListeners();
@@ -59,6 +71,12 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
 
         TextView tvEvento, tvArtista, tvFecha;
         LinearLayout linearLayout;
+        ImageView imvImagen;
+
+        int codConcierto, codLocal;
+        String descrip, foto;
+
+        Imagenes img;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,8 +85,10 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
             tvEvento = itemView.findViewById(R.id.tvNombre_cardView);
             tvArtista = itemView.findViewById(R.id.tvArtista_cardView);
             tvFecha = itemView.findViewById(R.id.tvFecha_cardView);
-
+            imvImagen = itemView.findViewById(R.id.imgCardView);
             linearLayout = itemView.findViewById(R.id.linearCardView);
+
+            img = new Imagenes(context);
         }
 
         void setOnClickListeners(){
@@ -80,10 +100,28 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
             if(view.getId()== R.id.linearCardView){
                 Intent intent = new Intent(context, DetalleEventoActivity.class);
                 //pasar los datos con la activity
+                intent.putExtra("codConcierto", codConcierto);
                 intent.putExtra("nomConcierto", tvEvento.getText());
                 intent.putExtra("artista", tvArtista.getText());
                 intent.putExtra("fecha", tvFecha.getText());
+                intent.putExtra("descripcion", descrip);
+                intent.putExtra("codLocal", codLocal);
+                intent.putExtra("foto", foto);
                 context.startActivity(intent);
+            }
+        }
+
+
+        public class Imagenes extends AppCompatActivity{
+
+            Context context;
+
+            public Imagenes(Context c){
+                this.context = c;
+            }
+            public int cargarImagen(String img){
+                int id = this.getResources().getIdentifier("i"+img, "drawable", this.getPackageName());
+                return id;
             }
         }
     }

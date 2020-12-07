@@ -26,7 +26,65 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Detalle de Compra"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:layout_marginBottom="@dimen/margenCaja"/>
+
+            <TextView
+                android:id="@+id/tvNroTransac_DetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:layout_marginTop="@dimen/margenCaja"
+                android:layout_marginBottom="@dimen/margenCaja"/>
+
+            <TextView
+                android:id="@+id/tvFecha_DetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/margenCaja"/>
+
+            <TextView
+                android:id="@+id/tvConcierto_DetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/margenCaja"/>
+
+            <TextView
+                android:id="@+id/tvZona_DetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/margenCaja"/>
+
+            <TextView
+                android:id="@+id/tvCantidad_DetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/margenCaja"/>
+
+            <TextView
+                android:id="@+id/tvPrecio_DetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/margenCaja"/>
+
+            <TextView
+                android:id="@+id/tvMonto_DetalleCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:layout_marginBottom="@dimen/margenCaja"/>
         </LinearLayout>
 
     </LinearLayout>

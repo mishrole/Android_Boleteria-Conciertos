@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     RecyclerView rvEventos;
     CardViewAdaptador adaptador;
-    ArrayList<Concierto> listaConcierto;
+    ArrayList<Concierto> listaConcierto = new ArrayList<>();
     MySqlConcierto daoConcierto = new MySqlConcierto(this);
 
     @Override
@@ -39,11 +39,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /*CardView y RecyclerView*/
         rvEventos = findViewById(R.id.rvEventos);
         listaConcierto = daoConcierto.listarConcierto();
-
         rvEventos.setLayoutManager(new LinearLayoutManager(this));
-        adaptador = new CardViewAdaptador(this, listaConcierto);
+        adaptador = new CardViewAdaptador(this, daoConcierto.listarConcierto());
         rvEventos.setAdapter(adaptador);
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
         else if(id == R.id.opcion2){
-            Toast.makeText(this, "OPCION 2", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, PerfilActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.opcion3){
             Toast.makeText(this, "OPCION 3", Toast.LENGTH_SHORT).show();
@@ -75,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "OPCION 6", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.opcion7){
-            Toast.makeText(this, "OPCION 7", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, IniciarSesionActivity.class);
+            startActivity(intent);
         }
 
         return true;

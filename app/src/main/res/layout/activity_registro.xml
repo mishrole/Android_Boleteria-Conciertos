@@ -97,16 +97,16 @@
             android:layout_marginBottom="@dimen/margenCaja"/>
 
         <EditText
-            android:id="@+id/edtEdadRegistro"
+            android:id="@+id/edtTipoRegistro"
             android:layout_width="@dimen/cajaTextoAncho"
             android:layout_height="@dimen/cajaTextoAlto"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text=""
-            android:hint="Edad"
+            android:layout_marginBottom="@dimen/margenCaja"
             android:background="@color/blanco"
+            android:ems="10"
+            android:hint="Tipo 1"
+            android:inputType="textPersonName"
             android:padding="@dimen/paddingCaja"
-            android:layout_marginBottom="@dimen/margenCaja"/>
+            android:text="1" />
 
         <Button
             android:id="@+id/btnRegistrarRegistro"

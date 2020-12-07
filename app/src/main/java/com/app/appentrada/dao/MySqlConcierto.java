@@ -13,26 +13,26 @@ import java.util.ArrayList;
 public class MySqlConcierto {
 
     private SqlOpenHelper admin;
+
     public MySqlConcierto(Context contexto){
         admin=new SqlOpenHelper(contexto);
     }
 
     public ArrayList<Concierto> listarConcierto(){
-        ArrayList<Concierto> lista = new ArrayList<Concierto>();
-        String sql = "select * from TB_CONCIERTO";
-        SQLiteDatabase base = admin.getReadableDatabase();
-        Cursor cursor = base.rawQuery(sql,null);
-        Concierto bean = null;
-
+        ArrayList<Concierto> lista=new ArrayList<Concierto>();
+        String sql="select * from TB_CONCIERTO";
+        SQLiteDatabase base=admin.getReadableDatabase();
+        Cursor cursor=base.rawQuery(sql,null);
+        Concierto bean=null;
         while(cursor.moveToNext()){
-            bean = new Concierto();
+            bean=new Concierto();
             bean.setCodConcierto(cursor.getInt(0));
             bean.setNombre(cursor.getString(1));
             bean.setArtista(cursor.getString(2));
             bean.setFecha(cursor.getString(3));
             bean.setDescrip(cursor.getString(4));
             bean.setCodLocal(cursor.getInt(5));
-            bean.setFoto(cursor.getString(6));
+            bean.setFoto(cursor.getInt(6));
             lista.add(bean);
         }
         return lista;

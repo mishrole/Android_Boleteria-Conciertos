@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class Entrada implements Serializable {
 
-    private String codEntrada;
+    private int codEntrada;
     private double precio;
     private int estado;
-    private String codZona;
-    private String codEvento;
+    private int codZona;
+    private int codConcierto;
 
-    public String getCodEntrada() {
+    public int getCodEntrada() {
         return codEntrada;
     }
 
-    public void setCodEntrada(String codEntrada) {
+    public void setCodEntrada(int codEntrada) {
         this.codEntrada = codEntrada;
     }
 
@@ -34,19 +34,19 @@ public class Entrada implements Serializable {
         this.estado = estado;
     }
 
-    public String getCodZona() {
+    public int getCodZona() {
         return codZona;
     }
 
-    public void setCodZona(String codZona) {
+    public void setCodZona(int codZona) {
         this.codZona = codZona;
     }
 
-    public String getCodEvento() {
-        return codEvento;
+    public int getCodConcierto() {
+        return codConcierto;
     }
 
-    public void setCodEvento(String codEvento) {
-        this.codEvento = codEvento;
+    public void setCodConcierto(int codConcierto) {
+        this.codConcierto = codConcierto;
     }
 }

@@ -44,8 +44,18 @@ public class Utilidades {
             "fec_con text,"+
             "desc_con varchar(255),"+
             "id_local int,"+
-            "foto varchar(45),"+
+            "foto int,"+
             "foreign key (id_local) references TB_LOCAL(id_local) )";
 
+    /*Creacion de tabla Entrada*/
+    public static final String tablaEntrada = "TB_ENTRADA";
+    public static final String crearTablaEntrada = "CREATE TABLE "+tablaEntrada+" ("+
+            "id_entrada integer primary key autoincrement,"+
+            "id_concierto int,"+
+            "id_zona int,"+
+            "estado int,"+
+            "precio double,"+
+            "foreign key (id_concierto) references TB_CONCIERTO(id_concierto),"+
+            "foreign key (id_zona) references TB_ZONA(id_zona) )";
 
 }

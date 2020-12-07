@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +18,12 @@ import androidx.appcompat.widget.Toolbar;
 public class DetalleEventoActivity  extends AppCompatActivity implements View.OnClickListener{
 
     Toolbar toolbar;
+    int codConcierto;
+    String foto;
     TextView tvNombreEvento, tvArtista, tvFecha, tvLugar, tvDescripcion;
     CheckBox chkFavorito;
     Button btnComprar;
+    ImageView imgImagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +39,11 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
         tvLugar = findViewById(R.id.tvLugar_DetalleEvento);
         tvDescripcion = findViewById(R.id.tvDescripcion_DetalleEvento);
         chkFavorito = findViewById(R.id.chkFavorito_DetalleEvento);
+        imgImagen = findViewById(R.id.imgDetalle);
         btnComprar = findViewById(R.id.btnComprar_DetalleEvento);
         btnComprar.setOnClickListener(this);
+
+        cargarDatos();
     }
 
     @Override
@@ -54,7 +61,8 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
             startActivity(intent);
         }
         else if(id == R.id.opcion2){
-            Toast.makeText(this, "OPCION 2", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, PerfilActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.opcion3){
             Toast.makeText(this, "OPCION 3", Toast.LENGTH_SHORT).show();
@@ -69,7 +77,8 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
             Toast.makeText(this, "OPCION 6", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.opcion7){
-            Toast.makeText(this, "OPCION 7", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, IniciarSesionActivity.class);
+            startActivity(intent);
         }
 
         return true;
@@ -79,7 +88,26 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
     public void onClick(View view) {
         if(view == btnComprar){
             Intent intent = new Intent(this, CompraEntradaActivity.class);
+            intent.putExtra("codConcierto", codConcierto);
+            intent.putExtra("nombreConcierto", tvNombreEvento.getText());
+            intent.putExtra("foto", foto);
             startActivity(intent);
         }
     }
+
+    void cargarDatos(){
+        Bundle datos = this.getIntent().getExtras();
+        codConcierto = datos.getInt("codConcierto");
+        tvNombreEvento.setText(datos.getString("nomConcierto"));
+        tvArtista.setText(datos.getString("artista"));
+        tvFecha.setText(datos.getString("fecha"));
+        tvLugar.setText(""+datos.getInt("codLocal"));
+        tvDescripcion.setText(datos.getString("descripcion"));
+        foto = datos.getString("foto");
+
+        int id = this.getResources().getIdentifier("i"+foto, "drawable", this.getPackageName());
+        imgImagen.setImageResource(id);
+    }
+
+
 }
