@@ -43,7 +43,7 @@ public class IniciarSesionActivity extends AppCompatActivity implements View.OnC
         btnIngresar.setOnClickListener(this);
         btnRegistrar.setOnClickListener(this);
 
-        ingresarDatos();
+        //ingresarDatos();
     }
 
 
@@ -57,8 +57,9 @@ public class IniciarSesionActivity extends AppCompatActivity implements View.OnC
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
-            else
+            else {
                 mensaje("No se encontro usuario");
+            }
         }
         else{
             Intent intent = new Intent(this, RegistroActivity.class);

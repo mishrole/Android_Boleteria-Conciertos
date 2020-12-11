@@ -82,6 +82,9 @@ public class MySqlUsuario {
         registro.put("dni_usu",bean.getDni());
         registro.put("id_tipo",bean.getTipo());
         salida=(int)base.insert("TB_USUARIO","id_usuario",registro);
+
+        objetoUsuario = bean;
+
         base.close();
         return salida;
     }
@@ -107,6 +110,7 @@ public class MySqlUsuario {
         int salida=-1;
         SQLiteDatabase base=admin.getWritableDatabase();
         salida=base.delete("TB_USUARIO","id_usuario="+cod,null);
+        base.close();
         return salida;
     }
 }

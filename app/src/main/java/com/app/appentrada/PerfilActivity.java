@@ -43,12 +43,14 @@ public class PerfilActivity extends AppCompatActivity implements View.OnClickLis
         btnGuardar = (Button) findViewById(R.id.btnGuardar_Perfil);
         btnGuardar.setOnClickListener(this);
 
-        edtNickname.setText(""+daoUsuario.objetoUsuario.getNickname());
-        edtPassword.setText(""+daoUsuario.objetoUsuario.getContrasena());
-        edtNombre.setText(""+daoUsuario.objetoUsuario.getNombre());
-        edtApellidos.setText(""+daoUsuario.objetoUsuario.getApellidos());
-        edtCorreo.setText(""+daoUsuario.objetoUsuario.getCorreo());
-        edtDni.setText(""+daoUsuario.objetoUsuario.getDni());
+        if(daoUsuario.objetoUsuario != null) {
+            edtNickname.setText(""+daoUsuario.objetoUsuario.getNickname());
+            edtPassword.setText(""+daoUsuario.objetoUsuario.getContrasena());
+            edtNombre.setText(""+daoUsuario.objetoUsuario.getNombre());
+            edtApellidos.setText(""+daoUsuario.objetoUsuario.getApellidos());
+            edtCorreo.setText(""+daoUsuario.objetoUsuario.getCorreo());
+            edtDni.setText(""+daoUsuario.objetoUsuario.getDni());
+        }
     }
 
     @Override
@@ -84,7 +86,9 @@ public class PerfilActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
+        if(view == btnGuardar) {
 
+        }
     }
 }
