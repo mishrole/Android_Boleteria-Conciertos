@@ -82,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nombre:" />
+                    android:text="    Nombre:" />
 
                 <EditText
                     android:id="@+id/edtNombre_Perfil"
@@ -90,8 +90,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="Nombre"/>
+                    android:hint="Nombre"
+                    android:inputType="textPersonName" />
             </LinearLayout>
 
             <LinearLayout
@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Apellidos:" />
+                    android:text="  Apellidos:" />
 
                 <EditText
                     android:id="@+id/edtApellidos_Perfil"
@@ -112,8 +112,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="Apellidos"/>
+                    android:hint="Apellidos"
+                    android:inputType="textPersonName" />
             </LinearLayout>
 
             <LinearLayout
@@ -126,7 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Correo:" />
+                    android:text="      Correo:" />
 
                 <EditText
                     android:id="@+id/edtCorreo_Perfil"
@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="DNI:" />
+                    android:text="            DNI:" />
 
                 <EditText
                     android:id="@+id/edtDni_Perfil"

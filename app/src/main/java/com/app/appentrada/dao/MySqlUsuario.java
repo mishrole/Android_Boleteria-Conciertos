@@ -13,13 +13,14 @@ import java.util.ArrayList;
 public class MySqlUsuario {
 
     private SqlOpenHelper admin;
+    public static Usuario objetoUsuario = null;
 
     public MySqlUsuario(Context contexto){
         admin=new SqlOpenHelper(contexto);
     }
 
     public ArrayList<Usuario> listarUsuario(){
-        ArrayList<Usuario> lista=new ArrayList<>();
+        ArrayList<Usuario> lista = new ArrayList<>();
         String sql="select * from TB_USUARIO";
         SQLiteDatabase base=admin.getReadableDatabase();
         Cursor cursor=base.rawQuery(sql,null);
@@ -39,13 +40,28 @@ public class MySqlUsuario {
         return lista;
     }
 
-    public int buscarUsuario(String usu, String contr){
-        int salida= -1;
-        String sql="select * from TB_USUARIO WHERE usuario like ? and contraseña like ?";
-        SQLiteDatabase base=admin.getReadableDatabase();
-        Cursor cursor=base.rawQuery(sql,new String[]{usu.trim(), contr.trim()});
+    public int buscarUsuario(String usu, String contr) {
+        int salida = -1;
+        String sql = "select * from TB_USUARIO WHERE usuario like ? and contraseña like ?";
+        SQLiteDatabase base = admin.getReadableDatabase();
+        Cursor cursor = base.rawQuery(sql, new String[]{usu.trim(), contr.trim()});
 
-        if(cursor.getCount() > 0) {
+        Usuario bean = null;
+        while(cursor.moveToNext()) {
+            bean = new Usuario();
+            bean.setCodUsuario(cursor.getInt(0));
+            bean.setNickname(cursor.getString(1));
+            bean.setContrasena(cursor.getString(2));
+            bean.setNombre(cursor.getString(3));
+            bean.setApellidos(cursor.getString(4));
+            bean.setCorreo(cursor.getString(5));
+            bean.setDni(cursor.getString(6));
+            bean.setTipo(cursor.getInt(7));
+        }
+
+        objetoUsuario = bean;
+
+        if (cursor.getCount() > 0) {
             salida = 1;
         }
 
