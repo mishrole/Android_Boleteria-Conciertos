@@ -117,9 +117,9 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 
         ContentValues valuesConcierto1 = new ContentValues();
         valuesConcierto1.put("nom_con", "Guns n roses en Lima");
-        valuesConcierto1.put("artista", "Guns n roses en Lima");
+        valuesConcierto1.put("artista", "Guns n roses");
         valuesConcierto1.put("fec_con", "2021-10-10");
-        valuesConcierto1.put("desc_con", "Guns n Roses vuelve a Lima");
+        valuesConcierto1.put("desc_con", "Guns n Roses vuelve a Lima con lo que promete ser el evento del año.");
         valuesConcierto1.put("id_local", 1);
         valuesConcierto1.put("foto", 1);
         db.insert(Utilidades.tablaConcierto, null, valuesConcierto1);
@@ -128,7 +128,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
         valuesConcierto2.put("nom_con", "Rolling Stones en Lima");
         valuesConcierto2.put("artista", "Rolling Stones");
         valuesConcierto2.put("fec_con", "2021-10-09");
-        valuesConcierto2.put("desc_con", "Rolling Stones vuelve a Lima");
+        valuesConcierto2.put("desc_con", "Rolling Stones vuelve a Lima con lo que promete ser el evento del año.");
         valuesConcierto2.put("id_local", 2);
         valuesConcierto2.put("foto", 2);
         db.insert(Utilidades.tablaConcierto, null, valuesConcierto2);
