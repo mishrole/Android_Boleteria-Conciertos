@@ -88,7 +88,31 @@ public class PerfilActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         if(view == btnGuardar) {
+            Usuario bean = new Usuario();
+            bean.setCodUsuario(daoUsuario.objetoUsuario.getCodUsuario());
+            bean.setNickname(edtNickname.getText().toString());
+            bean.setContrasena(edtPassword.getText().toString());
+            bean.setNombre(edtNombre.getText().toString());
+            bean.setApellidos(edtApellidos.getText().toString());
+            bean.setCorreo(edtCorreo.getText().toString());
+            bean.setDni(edtDni.getText().toString());
+            int salida;
+            salida = daoUsuario.actualizarUsuario(bean);
+
+            if (salida > 0){
+                mensaje("Los cambios han sido guardados");
+                daoUsuario.objetoUsuario = bean;
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
+            else {
+                mensaje("No se pudieron guardar los cambios");
+            }
 
         }
+    }
+
+    void mensaje(String m){
+        Toast.makeText(this,m,Toast.LENGTH_LONG).show();
     }
 }

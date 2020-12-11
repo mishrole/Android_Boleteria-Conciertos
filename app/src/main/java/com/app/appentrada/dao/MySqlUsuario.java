@@ -70,6 +70,35 @@ public class MySqlUsuario {
         return salida;
     }
 
+    public Usuario getUsuarioActual(String nickname) {
+        String sql = "select * from TB_USUARIO WHERE usuario like ?";
+        SQLiteDatabase base = admin.getReadableDatabase();
+        Cursor cursor = base.rawQuery(sql, new String[]{nickname.trim()});
+
+        Usuario bean = null;
+        while(cursor.moveToNext()) {
+            bean = new Usuario();
+            bean.setCodUsuario(cursor.getInt(0));
+            bean.setNickname(cursor.getString(1));
+            bean.setContrasena(cursor.getString(2));
+            bean.setNombre(cursor.getString(3));
+            bean.setApellidos(cursor.getString(4));
+            bean.setCorreo(cursor.getString(5));
+            bean.setDni(cursor.getString(6));
+            bean.setTipo(cursor.getInt(7));
+        }
+
+        if(cursor.getCount() > 0) {
+            objetoUsuario = bean;
+        }else {
+            objetoUsuario = null;
+        }
+
+        base.close();
+        return bean;
+    }
+
+
     public int adicionarUsuario(Usuario bean){
         int salida=-1;
         SQLiteDatabase base=admin.getWritableDatabase();
@@ -93,15 +122,14 @@ public class MySqlUsuario {
         int salida=-1;
         SQLiteDatabase base=admin.getWritableDatabase();
         ContentValues registro=new ContentValues();
-        registro.put("id_usuario",bean.getCodUsuario());
+        registro.put("id_usuario", bean.getCodUsuario());
         registro.put("usuario",bean.getNickname());
         registro.put("contraseña",bean.getContrasena());
         registro.put("nom_usu",bean.getNombre());
         registro.put("ape_usu",bean.getApellidos());
         registro.put("correo",bean.getCorreo());
         registro.put("dni_usu",bean.getDni());
-        registro.put("id_tipo",bean.getTipo());
-        salida=base.update("TB_USUARIO",registro,"id_usuario="+bean.getCodUsuario(),null);
+        salida=base.update("TB_USUARIO",registro,"id_usuario=" + bean.getCodUsuario(), null);
         base.close();
         return salida;
     }

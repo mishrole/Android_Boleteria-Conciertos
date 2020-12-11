@@ -52,6 +52,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
             salida = daoUsuario.adicionarUsuario(bean);
             if (salida > 0){
                 mensaje("Registro correcto...");
+                daoUsuario.objetoUsuario = daoUsuario.getUsuarioActual(bean.getNickname());
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }

@@ -107,7 +107,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 
         ContentValues valuesLocal3 = new ContentValues();
         valuesLocal3.put("nom_local", "Jockey Club");
-        valuesLocal3.put("direcion", "El Derby, Santiago de Surco");
+        valuesLocal3.put("direccion", "El Derby, Santiago de Surco");
         db.insert(Utilidades.tablaLocal, null, valuesLocal3);
 
         ContentValues valuesLocal4 = new ContentValues();
@@ -119,7 +119,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
         valuesConcierto1.put("nom_con", "Guns n roses en Lima");
         valuesConcierto1.put("artista", "Guns n roses en Lima");
         valuesConcierto1.put("fec_con", "2021-10-10");
-        valuesConcierto1.put("desc_con", "Guns n Roses vuelva a Lima");
+        valuesConcierto1.put("desc_con", "Guns n Roses vuelve a Lima");
         valuesConcierto1.put("id_local", 1);
         valuesConcierto1.put("foto", 1);
         db.insert(Utilidades.tablaConcierto, null, valuesConcierto1);
@@ -135,18 +135,5 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        /*
-        db.delete(Utilidades.tablaTipoUsuario, null, null);
-        db.delete(Utilidades.tablaUsuario, null, null);
-        db.delete(Utilidades.tablaZona, null, null);
-        db.delete(Utilidades.tablaLocal, null, null);
-        db.delete(Utilidades.tablaConcierto, null, null);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaTipoUsuario);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaUsuario);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaZona);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaLocal);
-        db.execSQL("DROP TABLE IF EXISTS "+Utilidades.tablaConcierto);
-        onCreate(db);*/
-    }
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {}
 }

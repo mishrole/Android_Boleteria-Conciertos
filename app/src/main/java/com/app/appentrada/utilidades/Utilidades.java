@@ -4,13 +4,13 @@ public class Utilidades {
 
     /*Creacion de tabla tipo Usuario*/
     public static final String tablaTipoUsuario = "TB_TIPO_USUARIO";
-    public static final String crearTablaTipoUsuario = "CREATE TABLE "+tablaTipoUsuario+" ("+
+    public static final String crearTablaTipoUsuario = "CREATE TABLE IF NOT EXISTS "+tablaTipoUsuario+" ("+
             "id_tipo integer primary key autoincrement,"+
             "usuario varchar(15) )";
 
     /*Creacion de tabla Usuario*/
     public static final String tablaUsuario = "TB_USUARIO";
-    public static final String crearTablaUsuario = "CREATE TABLE "+tablaUsuario+" ("+
+    public static final String crearTablaUsuario = "CREATE TABLE IF NOT EXISTS "+tablaUsuario+" ("+
             "id_usuario integer primary key autoincrement,"+
             "usuario varchar(20),"+
             "contraseña varchar(30),"+
@@ -23,21 +23,21 @@ public class Utilidades {
 
     /*Creacion de tabla zona*/
     public static final String tablaZona = "TB_ZONA";
-    public static final String crearTablaZona = "CREATE TABLE "+tablaZona+" ("+
+    public static final String crearTablaZona = "CREATE TABLE IF NOT EXISTS "+tablaZona+" ("+
             "id_zona integer primary key autoincrement,"+
             "nom_zona varchar(20),"+
             "precio double)";
 
     /*Creacion de tabla local*/
     public static final String tablaLocal = "TB_LOCAL";
-    public static final String crearTablaLocal = "CREATE TABLE "+tablaLocal+" ("+
+    public static final String crearTablaLocal = "CREATE TABLE IF NOT EXISTS "+tablaLocal+" ("+
             "id_local integer primary key autoincrement,"+
             "nom_local varchar(30),"+
             "direccion varchar(100) )";
 
     /*Creacion de tabla Usuario*/
     public static final String tablaConcierto = "TB_CONCIERTO";
-    public static final String crearTablaConcierto = "CREATE TABLE "+tablaConcierto+" ("+
+    public static final String crearTablaConcierto = "CREATE TABLE IF NOT EXISTS "+tablaConcierto+" ("+
             "id_concierto integer primary key autoincrement,"+
             "nom_con varchar(30),"+
             "artista varchar(40),"+
@@ -49,7 +49,7 @@ public class Utilidades {
 
     /*Creacion de tabla Entrada*/
     public static final String tablaEntrada = "TB_ENTRADA";
-    public static final String crearTablaEntrada = "CREATE TABLE "+tablaEntrada+" ("+
+    public static final String crearTablaEntrada = "CREATE TABLE IF NOT EXISTS "+tablaEntrada+" ("+
             "id_entrada integer primary key autoincrement,"+
             "id_concierto int,"+
             "id_zona int,"+
