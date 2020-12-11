@@ -88,15 +88,9 @@ public class CompraEntradaActivity extends AppCompatActivity implements View.OnC
             Toast.makeText(this, "OPCION 3", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.opcion4){
-            Toast.makeText(this, "OPCION 4", Toast.LENGTH_SHORT).show();
-        }
-        else if(id == R.id.opcion5){
             Toast.makeText(this, "OPCION 5", Toast.LENGTH_SHORT).show();
         }
-        else if(id == R.id.opcion6){
-            Toast.makeText(this, "OPCION 6", Toast.LENGTH_SHORT).show();
-        }
-        else if(id == R.id.opcion7){
+        else if(id == R.id.opcion5){
             Intent intent = new Intent(this, IniciarSesionActivity.class);
             startActivity(intent);
         }

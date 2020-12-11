@@ -15,6 +15,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.app.appentrada.dao.MySqlFavoritos;
+import com.app.appentrada.dao.MySqlLocal;
+import com.app.appentrada.dao.MySqlUsuario;
+import com.app.appentrada.entidad.Favoritos;
+import com.app.appentrada.entidad.Local;
+
+import java.util.List;
+
 public class DetalleEventoActivity  extends AppCompatActivity implements View.OnClickListener{
 
     Toolbar toolbar;
@@ -24,6 +32,11 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
     CheckBox chkFavorito;
     Button btnComprar;
     ImageView imgImagen;
+
+    private List<Local> listaLocales;
+    private MySqlLocal daoLocal = new MySqlLocal(this);
+    private MySqlFavoritos daoFavorito = new MySqlFavoritos(this);
+    private MySqlUsuario daoUsuario = new MySqlUsuario(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +55,7 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
         imgImagen = findViewById(R.id.imgDetalle);
         btnComprar = findViewById(R.id.btnComprar_DetalleEvento);
         btnComprar.setOnClickListener(this);
+        chkFavorito.setOnClickListener(this);
 
         cargarDatos();
     }
@@ -68,15 +82,9 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
             Toast.makeText(this, "OPCION 3", Toast.LENGTH_SHORT).show();
         }
         else if(id == R.id.opcion4){
-            Toast.makeText(this, "OPCION 4", Toast.LENGTH_SHORT).show();
-        }
-        else if(id == R.id.opcion5){
             Toast.makeText(this, "OPCION 5", Toast.LENGTH_SHORT).show();
         }
-        else if(id == R.id.opcion6){
-            Toast.makeText(this, "OPCION 6", Toast.LENGTH_SHORT).show();
-        }
-        else if(id == R.id.opcion7){
+        else if(id == R.id.opcion5){
             Intent intent = new Intent(this, IniciarSesionActivity.class);
             startActivity(intent);
         }
@@ -86,6 +94,25 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View view) {
+        if(view==chkFavorito){
+            if(chkFavorito.isChecked()){
+                int salida = -1;
+                Favoritos fav = new Favoritos();
+                fav.setIdFavoritos(codConcierto);
+                fav.setIdUsuario(daoUsuario.objetoUsuario.getCodUsuario());
+                salida = daoFavorito.adicionarFavoritos(fav);
+                if (salida>0){
+                    mensaje("Se añadio a favoritos");
+                }
+            }
+            else{
+                int salida = -1;
+                salida = daoFavorito.eliminarFavoritos(codConcierto, daoUsuario.objetoUsuario.getCodUsuario());
+                if (salida>0){
+                    mensaje("Se elimino de favoritos");
+                }
+            }
+        }
         if(view == btnComprar){
             Intent intent = new Intent(this, CompraEntradaActivity.class);
             intent.putExtra("codConcierto", codConcierto);
@@ -96,18 +123,46 @@ public class DetalleEventoActivity  extends AppCompatActivity implements View.On
     }
 
     void cargarDatos(){
+        listaLocales = daoLocal.listarLocal();
+
         Bundle datos = this.getIntent().getExtras();
         codConcierto = datos.getInt("codConcierto");
         tvNombreEvento.setText(datos.getString("nomConcierto"));
         tvArtista.setText(datos.getString("artista"));
         tvFecha.setText(datos.getString("fecha"));
-        tvLugar.setText(""+datos.getInt("codLocal"));
+
+        int l = datos.getInt("codLocal")-1;
+
+        tvLugar.setText(listaLocales.get(l).getNombre());
         tvDescripcion.setText(datos.getString("descripcion"));
         foto = datos.getString("foto");
 
         int id = this.getResources().getIdentifier("i"+foto, "drawable", this.getPackageName());
         imgImagen.setImageResource(id);
+
+        favoritos(codConcierto,daoUsuario.objetoUsuario.getCodUsuario());
     }
 
+    void mensaje(String m){
+        Toast.makeText(this,m,Toast.LENGTH_LONG).show();
+    }
+
+    void favoritos(int codCon, int codUsu){
+        List<Favoritos> listfav= daoFavorito.listarFavoritos(codCon, codUsu);
+        if(listfav==null){
+
+        }
+        else{
+            int ch;
+            for(int i=0; i>listfav.size(); i++){
+                ch = listfav.get(i).getIdFavoritos();
+                if(ch == codConcierto){
+                    chkFavorito.setChecked(true);
+                }
+            }
+        }
+
+
+    }
 
 }

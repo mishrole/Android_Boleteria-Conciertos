@@ -45,7 +45,7 @@ public class Utilidades {
             "desc_con varchar(255),"+
             "id_local int,"+
             "foto int,"+
-            "foreign key (id_local) references TB_LOCAL(id_local) )";
+            "foreign key(id_local) references TB_LOCAL(id_local) )";
 
     /*Creacion de tabla Entrada*/
     public static final String tablaEntrada = "TB_ENTRADA";
@@ -55,7 +55,14 @@ public class Utilidades {
             "id_zona int,"+
             "estado int,"+
             "precio double,"+
-            "foreign key (id_concierto) references TB_CONCIERTO(id_concierto),"+
-            "foreign key (id_zona) references TB_ZONA(id_zona) )";
+            "foreign key(id_concierto) references TB_CONCIERTO(id_concierto),"+
+            "foreign key(id_zona) references TB_ZONA(id_zona) )";
+
+    /*Creacion de tabla Favoritos*/
+    public static final String tablaFavoritos = "TB_FAVORITOS";
+    public static final String crearTablaFavoritos = "CREATE TABLE IF NOT EXISTS "+tablaFavoritos+" ("+
+            "id_favoritos integer primary key,"+
+            "id_usuario int,"+
+            "foreign key(id_usuario) references TB_USUARIO(id_usuario) )";
 
 }

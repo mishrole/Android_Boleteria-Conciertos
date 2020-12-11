@@ -21,6 +21,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.crearTablaLocal);
         db.execSQL(Utilidades.crearTablaConcierto);
         db.execSQL(Utilidades.crearTablaEntrada);
+        db.execSQL(Utilidades.crearTablaFavoritos);
 
         ContentValues valuesTipoUsuario1 = new ContentValues();
         valuesTipoUsuario1.put("usuario", "Cliente");
@@ -111,7 +112,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
         db.insert(Utilidades.tablaLocal, null, valuesLocal3);
 
         ContentValues valuesLocal4 = new ContentValues();
-        valuesLocal4.put("nom_local", "stadio San Marcos");
+        valuesLocal4.put("nom_local", "Estadio San Marcos");
         valuesLocal4.put("direccion", "UNMSM, Cercado de Lima");
         db.insert(Utilidades.tablaLocal, null, valuesLocal4);
 
@@ -132,6 +133,24 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
         valuesConcierto2.put("id_local", 2);
         valuesConcierto2.put("foto", 2);
         db.insert(Utilidades.tablaConcierto, null, valuesConcierto2);
+
+        ContentValues valuesConcierto3 = new ContentValues();
+        valuesConcierto3.put("nom_con", "Iron Maiden en Concierto");
+        valuesConcierto3.put("artista", "Iron Maiden");
+        valuesConcierto3.put("fec_con", "2021-02-12");
+        valuesConcierto3.put("desc_con", "Despues de tanto tiempo vuelven con fuerza a tocar sus más grandes exitos.");
+        valuesConcierto3.put("id_local", 3);
+        valuesConcierto3.put("foto", 3);
+        db.insert(Utilidades.tablaConcierto, null, valuesConcierto3);
+
+        ContentValues valuesConcierto4 = new ContentValues();
+        valuesConcierto4.put("nom_con", "Jbalvin en Concierto");
+        valuesConcierto4.put("artista", "Jbalvin");
+        valuesConcierto4.put("fec_con", "2021-10-20");
+        valuesConcierto4.put("desc_con", "Concierto especial para todos sus fans despues de una larga gira por Europa.");
+        valuesConcierto4.put("id_local", 4);
+        valuesConcierto4.put("foto", 4);
+        db.insert(Utilidades.tablaConcierto, null, valuesConcierto4);
     }
 
     @Override

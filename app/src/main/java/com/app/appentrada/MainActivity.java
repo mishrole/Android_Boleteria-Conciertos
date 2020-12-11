@@ -66,18 +66,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
         else if(id == R.id.opcion3){
-            Toast.makeText(this, "OPCION 3", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, FavoritosActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.opcion4){
-            Toast.makeText(this, "OPCION 4", Toast.LENGTH_SHORT).show();
-        }
-        else if(id == R.id.opcion5){
             Toast.makeText(this, "OPCION 5", Toast.LENGTH_SHORT).show();
         }
-        else if(id == R.id.opcion6){
-            Toast.makeText(this, "OPCION 6", Toast.LENGTH_SHORT).show();
-        }
-        else if(id == R.id.opcion7){
+        else if(id == R.id.opcion5){
             Intent intent = new Intent(this, IniciarSesionActivity.class);
             startActivity(intent);
         }

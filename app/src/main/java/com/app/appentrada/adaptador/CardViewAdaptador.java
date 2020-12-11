@@ -17,10 +17,12 @@ import com.app.appentrada.DetalleEventoActivity;
 import com.app.appentrada.R;
 import com.app.appentrada.entidad.Concierto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.ViewHolder>{
 
+    
     private LayoutInflater layoutInflador;
     private List<Concierto> data;
 
@@ -38,6 +40,12 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewholder, int i) {
+        List<Integer> listaimagenes = new ArrayList<>();
+        listaimagenes.add(R.drawable.i1);
+        listaimagenes.add(R.drawable.i2);
+        listaimagenes.add(R.drawable.i3);
+        listaimagenes.add(R.drawable.i4);
+        
         int codigo = data.get(i).getCodConcierto();
         String evento = data.get(i).getNombre();
         String artista = data.get(i).getArtista();
@@ -53,7 +61,7 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
         viewholder.descrip = descripcion;
         viewholder.codLocal = idLocal;
         viewholder.foto = ""+foto;
-        viewholder.imvImagen.setImageResource(R.drawable.i1);
+        viewholder.imvImagen.setImageResource(listaimagenes.get(i));
 
         //Eventos
         viewholder.setOnClickListeners();
@@ -110,7 +118,6 @@ public class CardViewAdaptador extends RecyclerView.Adapter<CardViewAdaptador.Vi
                 context.startActivity(intent);
             }
         }
-
 
         public class Imagenes extends AppCompatActivity{
 

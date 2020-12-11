@@ -1,6 +1,5 @@
 package com.app.appentrada;
 
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -71,13 +70,11 @@ public class PerfilActivity extends AppCompatActivity implements View.OnClickLis
             startActivity(intent);
         } else if (id == R.id.opcion3) {
             Toast.makeText(this, "OPCION 3", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.opcion4) {
+        } else if (id == R.id.opcion3) {
             Toast.makeText(this, "OPCION 4", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.opcion5) {
+        } else if (id == R.id.opcion4) {
             Toast.makeText(this, "OPCION 5", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.opcion6) {
-            Toast.makeText(this, "OPCION 6", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.opcion7) {
+        } else if (id == R.id.opcion5) {
             Intent intent = new Intent(this, IniciarSesionActivity.class);
             startActivity(intent);
         }
