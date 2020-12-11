@@ -41,19 +41,15 @@ public class MySqlUsuario {
 
     public int buscarUsuario(String usu, String contr){
         int salida= -1;
-        String sql="select * from TB_USUARIO";
+        String sql="select * from TB_USUARIO WHERE usuario like ? and contraseña like ?";
         SQLiteDatabase base=admin.getReadableDatabase();
-        Cursor cursor=base.rawQuery(sql,null);
-        Usuario bean;
-        while(cursor.moveToNext()){
-            bean=new Usuario();
-            bean.setCodUsuario(cursor.getInt(0));
-            bean.setNickname(cursor.getString(1));
-            bean.setContrasena(cursor.getString(2));
+        Cursor cursor=base.rawQuery(sql,new String[]{usu.trim(), contr.trim()});
 
-            if(bean.getNickname().trim()==usu && bean.getContrasena().trim()==contr)
-                salida = 1;
+        if(cursor.getCount() > 0) {
+            salida = 1;
         }
+
+        base.close();
 
         return salida;
     }
@@ -70,6 +66,7 @@ public class MySqlUsuario {
         registro.put("dni_usu",bean.getDni());
         registro.put("id_tipo",bean.getTipo());
         salida=(int)base.insert("TB_USUARIO","id_usuario",registro);
+        base.close();
         return salida;
     }
 
@@ -86,6 +83,7 @@ public class MySqlUsuario {
         registro.put("dni_usu",bean.getDni());
         registro.put("id_tipo",bean.getTipo());
         salida=base.update("TB_USUARIO",registro,"id_usuario="+bean.getCodUsuario(),null);
+        base.close();
         return salida;
     }
 
